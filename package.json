@@ -15,8 +15,6 @@
     "test": "jest --config jest.config.js",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "test:coverage": "jest --coverage --config jest.config.js",
-    "dev": "ts-node src/index.ts",
-    "dev:debug": "node --inspect-brk node_modules/.bin/ts-node src/index.ts",
     "prepublishOnly": "run-s clean build",
     "clean": "rimraf lib",
     "build": "run-s build:*",
