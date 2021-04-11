@@ -19,6 +19,7 @@ class AddressRange {
 
   constructor(startAddress: bigint, endAddress: bigint)
 
+  includes(address: bigint): boolean
   isSubSetOf(addressRange: AddressRange): boolean
   hasIntersectionOf(addressRange: AddressRange): boolean
   hasLeftIntersectionOf(addressRange: AddressRange): boolean
@@ -33,6 +34,9 @@ class AddressRange {
 class IPv4AddressRange extends AddressRange {
   static from(startAddress: string, endAddress: string): IPv4AddressRange
   static from(startAddress: string, hosts: number): IPv4AddressRange
+
+  includes(address: string): boolean
+  includes(address: bigint): boolean
   toString(): string
 }
 ```
@@ -43,6 +47,9 @@ class IPv4AddressRange extends AddressRange {
 class IPv6AddressRange extends AddressRange {
   static from(startAddress: string, endAddress: string): IPv6AddressRange
   static from(startAddress: string, hosts: number): IPv6AddressRange
+
+  includes(address: string): boolean
+  includes(address: bigint): boolean
   toString(): string
 }
 ```

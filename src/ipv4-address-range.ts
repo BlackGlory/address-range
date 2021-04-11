@@ -25,6 +25,16 @@ export class IPv4AddressRange extends AddressRange {
     }
   }
 
+  includes(address: string): boolean
+  includes(address: bigint): boolean
+  includes(address: string | bigint): boolean {
+    if (isString(address)) {
+      return super.includes(convertIPv4AddressStringToBigInt(address))
+    } else {
+      return super.includes(address)
+    }
+  }
+
   toString(): string {
     const startAddress = convertIPv4AddressBigIntToString(this.startAddress)
     const endAddress = convertIPv4AddressBigIntToString(this.endAddress)

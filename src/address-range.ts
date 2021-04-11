@@ -4,6 +4,11 @@ export class AddressRange {
   , public readonly endAddress: bigint
   ) {}
 
+  includes(address: bigint): boolean {
+    return this.startAddress <= address
+        && this.endAddress >= address
+  }
+
   isSubSetOf(addressRange: AddressRange): boolean {
     return this.startAddress >= addressRange.startAddress
         && this.endAddress <= addressRange.endAddress

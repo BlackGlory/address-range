@@ -25,6 +25,16 @@ export class IPv6AddressRange extends AddressRange {
     }
   }
 
+  includes(address: string): boolean
+  includes(address: bigint): boolean
+  includes(address: string | bigint): boolean {
+    if (isString(address)) {
+      return super.includes(convertIPv6AddressStringToBigInt(address))
+    } else {
+      return super.includes(address)
+    }
+  }
+
   toString(): string {
     const startAddress = shortenIPv6Address(
       convertIPv6AddressBigIntToString(this.startAddress)
