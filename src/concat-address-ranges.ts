@@ -1,41 +1,50 @@
 import { AddressRange } from './address-range'
+import { Constructor } from 'hotypes'
+import { toArray } from 'iterable-operator'
 
 export function concatAddressRanges<T extends AddressRange>(
   ranges: T[]
-, constructor: new (startAddress: bigint, endAddress: bigint) => T
+, constructor: Constructor<T>
 ): T[] {
   const map = convertIterableToMap(ranges)
 
-  let count = 0
   while (true) {
-    const lastRoundCount = count
-    for (const [start, end] of map) {
+    let operations = 0
+    const keys = toArray(map.keys())
+    for (const key of keys) {
+      const start = key
+      if (!map.has(key)) continue
+      const end = map.get(key)!
+
       const target = end + 1n
       if (map.has(target)) {
         const newEnd = map.get(target)!
         map.delete(target)
         map.set(start, newEnd)
-        count++
+        operations++
       }
     }
-    if (lastRoundCount === count) break
+    if (operations === 0) break
   }
 
-  return convertMapToArray(map)
+  return convertMapToArray(map, constructor)
+}
 
-  function convertIterableToMap(iterable: Iterable<T>): Map<bigint, bigint> {
-    const collection = new Map<bigint, bigint>()
-    for (const range of iterable) {
-      collection.set(range.startAddress, range.endAddress)
-    }
-    return collection
+function convertIterableToMap<T extends AddressRange>(iterable: Iterable<T>): Map<bigint, bigint> {
+  const collection = new Map<bigint, bigint>()
+  for (const range of iterable) {
+    collection.set(range.startAddress, range.endAddress)
   }
+  return collection
+}
 
-  function convertMapToArray(map: Map<bigint, bigint>): T[] {
-    const result: T[] = []
-    for (const [startAddress, endAddress] of map) {
-      result.push(new constructor(startAddress, endAddress))
-    }
-    return result
+function convertMapToArray<T extends AddressRange>(
+  map: Map<bigint, bigint>
+, constructor: Constructor<T>
+): T[] {
+  const result: T[] = []
+  for (const [startAddress, endAddress] of map) {
+    result.push(new constructor(startAddress, endAddress))
   }
+  return result
 }

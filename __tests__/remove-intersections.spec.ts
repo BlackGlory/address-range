@@ -4,13 +4,13 @@ import { removeIntersections } from '@src/remove-intersections'
 describe('removeIntersections(ranges: AddressRange[]): AddressRange[]', () => {
   describe('[0, 50] [50, 150] [150, 200]', () => {
     it('return ranges removed intersections', () => {
-      const iter = [
+      const ranges = [
         new AddressRange(0n, 50n)
       , new AddressRange(50n, 150n)
       , new AddressRange(150n, 200n)
       ]
 
-      const result = removeIntersections(iter, AddressRange)
+      const result = removeIntersections(ranges, AddressRange)
 
       expect(result.length).toBe(1)
       expect(result[0]).toBeInstanceOf(AddressRange)
@@ -21,13 +21,13 @@ describe('removeIntersections(ranges: AddressRange[]): AddressRange[]', () => {
 
   describe('[0, 100] [50, 150] [100, 200]', () => {
     it('return ranges removed intersections', () => {
-      const iter = [
+      const ranges = [
         new AddressRange(0n, 100n)
       , new AddressRange(50n, 150n)
       , new AddressRange(100n, 200n)
       ]
 
-      const result = removeIntersections(iter, AddressRange)
+      const result = removeIntersections(ranges, AddressRange)
 
       expect(result.length).toBe(1)
       expect(result[0]).toBeInstanceOf(AddressRange)

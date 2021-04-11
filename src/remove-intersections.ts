@@ -27,12 +27,15 @@ export function removeIntersections<T extends AddressRange>(
     , constructor
     )
   }
+}
 
-  function findRightIntersection(collection: T[], subject: T): T | null {
-    for (const object of collection) {
-      if (subject === object) continue
-      if (subject.hasRightIntersectionOf(object)) return object
-    }
-    return null
+function findRightIntersection<T extends AddressRange>(
+  collection: T[]
+, subject: T
+): T | null {
+  for (const object of collection) {
+    if (subject === object) continue
+    if (subject.hasRightIntersectionOf(object)) return object
   }
+  return null
 }
