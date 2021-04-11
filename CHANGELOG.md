@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/BlackGlory/address-range/compare/v0.2.0...v0.2.1) (2021-04-11)
+
+
+### Features
+
+* add convertors ([5268d3c](https://github.com/BlackGlory/address-range/commit/5268d3c762f7bd13ce989730a025f42ab382348a))
+
 ## [0.2.0](https://github.com/BlackGlory/address-range/compare/v0.1.0...v0.2.0) (2021-04-11)
 
 
