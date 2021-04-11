@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/BlackGlory/address-range/compare/v0.1.0...v0.2.0) (2021-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* concatAddressRanges => concat
+removeIntersections => merge
+
+### Features
+
+* add AddressRange#includes ([fde4e93](https://github.com/BlackGlory/address-range/commit/fde4e933ff9c9cf958ab4389512ca6af5680ed85))
+* rename and add functions ([21d80b0](https://github.com/BlackGlory/address-range/commit/21d80b0c47a96e92e5557461055faa6bf251b591))
+
 ## 0.1.0 (2021-04-10)
 
 
