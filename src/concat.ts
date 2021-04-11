@@ -2,7 +2,11 @@ import { AddressRange } from './address-range'
 import { Constructor } from 'hotypes'
 import { toArray } from 'iterable-operator'
 
-export function concatAddressRanges<T extends AddressRange>(
+/**
+ * If the address ranges are concatenated at the beginning and end,
+ * concat the address ranges.
+ */
+export function concat<T extends AddressRange>(
   ranges: T[]
 , constructor: Constructor<T>
 ): T[] {
@@ -30,7 +34,9 @@ export function concatAddressRanges<T extends AddressRange>(
   return convertMapToArray(map, constructor)
 }
 
-function convertIterableToMap<T extends AddressRange>(iterable: Iterable<T>): Map<bigint, bigint> {
+function convertIterableToMap<T extends AddressRange>(
+  iterable: Iterable<T>
+): Map<bigint, bigint> {
   const collection = new Map<bigint, bigint>()
   for (const range of iterable) {
     collection.set(range.startAddress, range.endAddress)

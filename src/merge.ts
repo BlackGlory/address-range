@@ -1,28 +1,32 @@
 import { HashSet } from '@blackglory/structures'
 import { AddressRange } from '@src/address-range'
+import { Constructor } from 'hotypes'
 
-export function removeIntersections<T extends AddressRange>(
+/**
+ * If the address ranges have intersections, merge the address ranges.
+ */
+export function merge<T extends AddressRange>(
   ranges: T[]
-, constructor: new (startAddress: bigint, endAddress: bigint) => T
+, constructor: Constructor<T>
 ): T[] {
-  const intersections = new WeakSet<T>()
+  const removed = new WeakSet<T>()
   const news = new HashSet<T>(range => range.toString())
-  for (const current of ranges) {
-    if (intersections.has(current)) continue
-    const right = findRightIntersection(ranges, current)
+  for (const range of ranges) {
+    if (removed.has(range)) continue
+    const right = findRightIntersection(ranges, range)
     if (right) {
-      intersections.add(current)
-      intersections.add(right)
-      news.add(new constructor(current.startAddress, right.endAddress))
+      removed.add(range)
+      removed.add(right)
+      news.add(new constructor(range.startAddress, right.endAddress))
     }
   }
 
   if (news.size === 0) {
     return ranges
   } else {
-    return removeIntersections(
+    return merge(
       ranges
-        .filter(x => !intersections.has(x))
+        .filter(x => !removed.has(x))
         .concat(Array.from(news))
     , constructor
     )

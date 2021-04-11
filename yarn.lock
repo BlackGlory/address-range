@@ -294,7 +294,7 @@
   dependencies:
     "@blackglory/errors" "^1.1.2"
 
-"@blackglory/types@^0.4.1":
+"@blackglory/types@^0.4.1", "@blackglory/types@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@blackglory/types/-/types-0.4.2.tgz#98c1dbde92fa77415200961a578d4f784c4b6528"
   integrity sha512-Goqz0JIzDg1HfwOce0z0pps3oqsX/XbO51LRdAbXbHDYY9bDm0R+L54uDZfUV7DVQi9v/5jkrmXH6aHlHkgJtg==

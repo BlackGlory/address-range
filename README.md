@@ -31,7 +31,8 @@ class AddressRange {
 
 ```ts
 class IPv4AddressRange extends AddressRange {
-  static create(startAddress: string, hosts: number): AddressRange
+  static from(startAddress: string, endAddress: string): IPv4AddressRange
+  static from(startAddress: string, hosts: number): IPv4AddressRange
   toString(): string
 }
 ```
@@ -40,19 +41,34 @@ class IPv4AddressRange extends AddressRange {
 
 ```ts
 class IPv6AddressRange extends AddressRange {
-  static create(startAddress: string, cidr: number): AddressRange
+  static from(startAddress: string, endAddress: string): IPv6AddressRange
+  static from(startAddress: string, hosts: number): IPv6AddressRange
   toString(): string
 }
 ```
 
-### concatAddressRanges
+### concat
 
 ```ts
-function concatAddressRanges<T extends AddressRange>(
+function concat<T extends AddressRange>(
   ranges: T[]
-, constructor: new (startAddress: bigint, endAddress: bigint) => T
+, constructor: Constructor<T>
 ): T[]
 ```
+
+If the address ranges are concatenated at the beginning and end,
+concat the address ranges.
+
+### merge
+
+```ts
+function merge<T extends AddressRange>(
+  ranges: T[]
+, constructor: Constructor<T>
+): T[]
+```
+
+If the address ranges have intersections, merge the address ranges.
 
 ### removeSubsets
 
@@ -60,11 +76,16 @@ function concatAddressRanges<T extends AddressRange>(
 function removeSubsets<T extends AddressRange>(ranges: T[]): T[]
 ```
 
-### removeIntersections
+If the address range is a subset of another address range,
+remove the address range.
+
+### compress
 
 ```ts
-function removeIntersections<T extends AddressRange>(
+function compress<T extends AddressRange>(
   ranges: T[]
-, constructor: new (startAddress: bigint, endAddress: bigint) => T
+, constructor: Constructor<T>
 ): T[]
 ```
+
+Lossless compression of address ranges.

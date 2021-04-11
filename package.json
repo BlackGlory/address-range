@@ -53,6 +53,7 @@
   },
   "dependencies": {
     "@blackglory/structures": "^0.1.14",
+    "@blackglory/types": "^0.4.2",
     "hotypes": "^0.1.4",
     "ip": "^1.1.5",
     "ip-address": "^7.1.0",
