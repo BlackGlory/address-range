@@ -1,6 +1,8 @@
 import { Address6 } from 'ip-address'
 import { AddressRange } from './address-range'
 import { isString } from '@blackglory/types'
+import { convertIPv6AddressBigIntToString } from './convert-ipv6-address-bigint-to-string'
+import { convertIPv6AddressStringToBigInt } from './convert-ipv6-address-string-to-bigint'
 
 export class IPv6AddressRange extends AddressRange {
   static from(startAddress: string, endAddress: string): IPv6AddressRange
@@ -36,30 +38,8 @@ export class IPv6AddressRange extends AddressRange {
   }
 
   toString(): string {
-    const startAddress = shortenIPv6Address(
-      convertIPv6AddressBigIntToString(this.startAddress)
-    )
-    const endAddress = shortenIPv6Address(
-      convertIPv6AddressBigIntToString(this.endAddress)
-    )
+    const startAddress = convertIPv6AddressBigIntToString(this.startAddress)
+    const endAddress = convertIPv6AddressBigIntToString(this.endAddress)
     return `${startAddress}-${endAddress}`
   }
-}
-
-function convertIPv6AddressStringToBigInt(address: string): bigint {
-  const hex = new Address6(address).canonicalForm().split(':').join('')
-  return BigInt(`0x${hex}`)
-}
-
-function convertIPv6AddressBigIntToString(address: bigint): string {
-  const hex = address.toString(16).padStart(32, '0')
-  const groups = []
-  for (let i = 0; i < 8; i++) {
-    groups.push(hex.slice(i * 4, (i + 1) * 4))
-  }
-  return groups.join(':')
-}
-
-function shortenIPv6Address(address: string): string {
-  return new Address6(address).correctForm()
 }

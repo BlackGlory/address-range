@@ -96,3 +96,27 @@ function compress<T extends AddressRange>(
 ```
 
 Lossless compression of address ranges.
+
+### convertIPv4AddressBigIntToString
+
+```ts
+function convertIPv4AddressBigIntToString(address: bigint): string
+```
+
+### convertIPv4AddressStringToBigInt
+
+```ts
+function convertIPv4AddressStringToBigInt(address: string): bigint
+```
+
+### convertIPv6AddressBigIntToString
+
+```ts
+function convertIPv6AddressBigIntToString(address: bigint): string
+```
+
+### convertIPv6AddressStringToBigInt
+
+```ts
+function convertIPv6AddressStringToBigInt(address: string): bigint
+```

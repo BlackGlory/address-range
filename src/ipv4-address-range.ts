@@ -1,6 +1,8 @@
 import * as ip from 'ip'
 import { AddressRange } from './address-range'
 import { isString } from '@blackglory/types'
+import { convertIPv4AddressBigIntToString } from './convert-ipv4-address-bigint-to-string'
+import { convertIPv4AddressStringToBigInt } from './convert-ipv4-address-string-to-bigint'
 
 export class IPv4AddressRange extends AddressRange {
   static from(startAddress: string, endAddress: string): IPv4AddressRange
@@ -40,12 +42,4 @@ export class IPv4AddressRange extends AddressRange {
     const endAddress = convertIPv4AddressBigIntToString(this.endAddress)
     return `${startAddress}-${endAddress}`
   }
-}
-
-export function convertIPv4AddressBigIntToString(address: bigint): string {
-  return ip.fromLong(Number(address))
-}
-
-export function convertIPv4AddressStringToBigInt(address: string): bigint {
-  return BigInt(ip.toLong(address))
 }
