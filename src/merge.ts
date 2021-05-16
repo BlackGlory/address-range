@@ -1,6 +1,7 @@
 import { HashSet } from '@blackglory/structures'
 import { AddressRange } from '@src/address-range'
 import { Constructor } from 'hotypes'
+import { toArray } from 'iterable-operator'
 
 /**
  * If the address ranges have intersections, merge the address ranges.
@@ -27,7 +28,7 @@ export function merge<T extends AddressRange>(
     return merge(
       ranges
         .filter(x => !removed.has(x))
-        .concat(Array.from(news))
+        .concat(toArray(news))
     , constructor
     )
   }
