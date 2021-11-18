@@ -2,7 +2,7 @@ import { AddressRange } from './address-range'
 import { concat } from './concat'
 import { merge } from './merge'
 import { removeSubsets } from './remove-subsets'
-import { Constructor } from 'justypes'
+import type { Constructor } from 'justypes'
 
 /**
  * Lossless compression of address ranges.

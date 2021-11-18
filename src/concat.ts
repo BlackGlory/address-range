@@ -1,5 +1,5 @@
 import { AddressRange } from './address-range'
-import { Constructor } from 'justypes'
+import type { Constructor } from 'justypes'
 import { toArray } from 'iterable-operator'
 
 /**

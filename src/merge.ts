@@ -1,6 +1,6 @@
 import { HashSet } from '@blackglory/structures'
 import { AddressRange } from '@src/address-range'
-import { Constructor } from 'justypes'
+import type { Constructor } from 'justypes'
 import { toArray } from 'iterable-operator'
 
 /**
