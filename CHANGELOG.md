@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.9](https://github.com/BlackGlory/address-range/compare/v0.2.8...v0.2.9) (2021-11-18)
+
+
+### Bug Fixes
+
+* **build:** remove preserveValueImports ([63e13af](https://github.com/BlackGlory/address-range/commit/63e13af702ba0c44b39c74b7feb91e5883e994f0))
+
 ### [0.2.8](https://github.com/BlackGlory/address-range/compare/v0.2.7...v0.2.8) (2021-11-18)
 
 ### [0.2.7](https://github.com/BlackGlory/address-range/compare/v0.2.6...v0.2.7) (2021-08-25)
