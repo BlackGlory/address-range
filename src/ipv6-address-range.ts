@@ -1,6 +1,6 @@
 import { Address6 } from 'ip-address'
 import { AddressRange } from './address-range'
-import { isString } from '@blackglory/types'
+import { isString } from 'extra-utils'
 import { convertIPv6AddressBigIntToString } from './convert-ipv6-address-bigint-to-string'
 import { convertIPv6AddressStringToBigInt } from './convert-ipv6-address-string-to-bigint'
 
