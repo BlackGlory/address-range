@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.13](https://github.com/BlackGlory/address-range/compare/v0.2.12...v0.2.13) (2023-06-10)
+
+
+### Bug Fixes
+
+* export src ([5f34e39](https://github.com/BlackGlory/address-range/commit/5f34e3981859c9bb16853a7cf50e06a9f6575c5c))
+
 ### [0.2.12](https://github.com/BlackGlory/address-range/compare/v0.2.11...v0.2.12) (2022-11-07)
 
 ### [0.2.11](https://github.com/BlackGlory/address-range/compare/v0.2.10...v0.2.11) (2022-08-06)
