@@ -1,12 +1,7 @@
 import { AddressRange } from '@src/address-range'
 import { merge } from '@src/merge'
 
-describe(`
-  merge<T extends AddressRange>(
-    ranges: AddressRange[]
-  , constructor: Constructor<T>
-  ): T[]
-`, () => {
+describe('merge', () => {
   describe('[[0, 50], [50, 150], [150, 200]]', () => {
     it('return [[0, 200]]', () => {
       const ranges = [

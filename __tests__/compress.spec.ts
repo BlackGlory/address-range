@@ -1,12 +1,7 @@
 import { AddressRange } from '@src/address-range'
 import { compress } from '@src/compress'
 
-describe(`
-  compress<T extends AddressRange>(
-    ranges: T[]
-  , constructor: Constructor<T>
-  ): T[] {
-`, () => {
+describe('compress', () => {
   describe('[[0, 50], [25, 75], [76, 100], [50, 100]]', () => {
     it('return [[0, 100]]', () => {
       const range = [

@@ -1,5 +1,4 @@
 import { AddressRange } from './address-range'
-import type { Constructor } from 'justypes'
 import { toArray } from 'iterable-operator'
 
 /**
@@ -8,7 +7,7 @@ import { toArray } from 'iterable-operator'
  */
 export function concat<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[] {
   const map = convertIterableToMap(ranges)
 
@@ -46,7 +45,7 @@ function convertIterableToMap<T extends AddressRange>(
 
 function convertMapToArray<T extends AddressRange>(
   map: Map<bigint, bigint>
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[] {
   const result: T[] = []
   for (const [startAddress, endAddress] of map) {

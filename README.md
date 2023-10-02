@@ -52,7 +52,7 @@ class IPv6AddressRange extends AddressRange {
 ```ts
 function concat<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[]
 ```
 
@@ -63,7 +63,7 @@ concat the address ranges.
 ```ts
 function merge<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[]
 ```
 
@@ -81,7 +81,7 @@ remove the address range.
 ```ts
 function compress<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[]
 ```
 

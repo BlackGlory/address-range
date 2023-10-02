@@ -2,7 +2,6 @@ import { AddressRange } from './address-range'
 import { concat } from './concat'
 import { merge } from './merge'
 import { removeSubsets } from './remove-subsets'
-import type { Constructor } from 'justypes'
 import { pipe } from 'extra-utils'
 
 /**
@@ -10,7 +9,7 @@ import { pipe } from 'extra-utils'
  */
 export function compress<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[] {
   return pipe(
     ranges

@@ -1,12 +1,7 @@
 import { AddressRange } from '@src/address-range'
 import { concat } from '@src/concat'
 
-describe(`
-  concat<T extends AddressRange>(
-    ranges: T[]
-  , constructor: Constructor<T>
-  ): T[]
-`, () => {
+describe('concat', () => {
   describe('[[0, 100], [101, 200], [201, 300]]', () => {
     it('return [[0, 300]]', () => {
       const ranges = [

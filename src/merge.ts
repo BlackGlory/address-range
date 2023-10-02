@@ -1,6 +1,5 @@
 import { HashSet } from '@blackglory/structures'
 import { AddressRange } from '@src/address-range'
-import type { Constructor } from 'justypes'
 import { toArray } from 'iterable-operator'
 
 /**
@@ -8,7 +7,7 @@ import { toArray } from 'iterable-operator'
  */
 export function merge<T extends AddressRange>(
   ranges: T[]
-, constructor: Constructor<T>
+, constructor: new (startAddress: bigint, endAddress: bigint) => T
 ): T[] {
   const removed = new WeakSet<T>()
   const news = new HashSet<T>(range => range.toString())
